@@ -5,14 +5,14 @@ public class ContaBancaria {
 
         String nomeUsuario = "Ewerton";
         String tipoConta = "Corrente";
-        double saldoInicial = 2100;
+        double saldo = 2100;
         int opcaoEscolhida = 0;
 
         System.out.println("********************************************\n" +
                 "Dados iniciais do cliente:\n\n" +
                 "Nome:                 " + nomeUsuario + "\n" +
                 "Tipo de conta:        " + tipoConta + "\n" +
-                "Saldo inicial:        " + saldoInicial + "\n" +
+                "Saldo inicial:        " + saldo + "\n" +
                 "********************************************\n\n");
 
         while (opcaoEscolhida != 4) {
@@ -34,7 +34,7 @@ public class ContaBancaria {
 
             } else if (opcaoEscolhida == 1) {
 
-                System.out.println("O saldo atual é: " + saldoInicial + "\n");
+                System.out.println("O saldo atual é: " + saldo + "\n");
                 System.out.println("-----------------------------");
 
             } else if (opcaoEscolhida == 2) {
@@ -42,13 +42,31 @@ public class ContaBancaria {
                 System.out.println("Digite o valor a receber: ");
                 Scanner leituraValorReceber = new Scanner(System.in);
                 double valorReceber = leituraValorReceber.nextDouble();
-                saldoInicial += valorReceber;
+                saldo += valorReceber;
 
-                System.out.println("Saldo atual atualizado: \n" + (saldoInicial) + "\n");
+                System.out.println("Saldo atual atualizado: \n" + (saldo) + "\n");
                 System.out.println("-----------------------------");
+            } else if (opcaoEscolhida == 3) {
+
+                System.out.println("Informe o valor que deseja transferir: ");
+                Scanner leituraValorTransferencia = new Scanner(System.in);
+                double valorTransferencia = leituraValorTransferencia.nextDouble();
+
+                if (valorTransferencia > saldo){
+                    System.out.println("Não é possível fazer essa transferência. Saldo insuficiente.");
+                } else {
+                    saldo -= valorTransferencia;
+                    System.out.println("Saldo atual atualizado: \n" + (saldo) + "\n");
+                }
+            } else if (opcaoEscolhida == 4) {
+                System.out.println("********************************************\n" +
+                        "Dados iniciais do cliente:\n\n" +
+                        "Nome:                 " + nomeUsuario + "\n" +
+                        "Tipo de conta:        " + tipoConta + "\n" +
+                        "Saldo:                " + saldo + "\n" +
+                        "********************************************\n\n");
+
             }
         }
-
-
     }
 }
